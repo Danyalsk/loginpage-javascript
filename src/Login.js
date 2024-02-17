@@ -5,6 +5,7 @@ const Login = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [otp, setOtp] = useState("");
   const [enteredOTP, setEnteredOTP] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const generateOTP = () => {
@@ -15,10 +16,10 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (otp === enteredOTP) {
+    if (otp === enteredOTP && password === "1234") {
       navigate("/nextpage");
     } else {
-      alert("Wrong OTP! Please try again.");
+      alert("Wrong OTP or Password!");
     }
   };
 
@@ -42,6 +43,21 @@ const Login = () => {
             type="text"
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "8px",
+              border: "1px solid #ccc",
+              borderRadius: "3px",
+            }}
+          />
+
+          <label style={{ display: "block", marginBottom: "5px" }}>
+            Password:
+          </label>
+          <input
+            type="text"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             style={{
               width: "100%",
               padding: "8px",
